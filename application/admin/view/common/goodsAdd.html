@@ -1,0 +1,278 @@
+<script src="__STATIC__/ueditor/ueditor.config.js"></script>
+<script src="__STATIC__/ueditor/ueditor.all.min.js"></script>
+<script src="__STATIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <a href="{:url('Index/index')}">系统</a>
+            </li>
+            <li>
+                <a href="{:url('Goods/index')}">商品列表</a>
+            </li>
+            <li class="active">添加商品</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+
+    <!-- Page Body -->
+    <div class="page-body">
+
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="widget">
+                    <div class="widget-header bordered-bottom bordered-blue">
+                        <span class="widget-caption">添加商品</span>
+                    </div>
+                    <div class="widget-body">
+                        <div id="horizontal-form">
+                            <form class="form-horizontal" role="form" action="{:url('Goods/add')}" method="post" enctype="multipart/form-data">
+
+                                <div class="form-group">
+                                    <label for="goods_name"
+                                           class="col-sm-2 control-label no-padding-right">商品名称</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" id="name" placeholder="" name="goods_name"
+                                               required="" type="text">
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cate_id" class="col-sm-2 control-label no-padding-right">商品分类</label>
+                                    <div class="col-sm-6">
+                                        <select name="cate_id" style="width: 100%;">
+                                            <option value="">--请选择--</option>
+                                            {foreach $goodsAdd as $v}
+                                            <option value="{$v.id}">{$v.name}</option>
+                                            {/foreach}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pic"
+                                           class="col-sm-2 control-label no-padding-right">商品图片</label>
+                                    <div class="col-sm-6">
+
+                                        <input type="file" name="pic" id="pic" onchange="previewFile()">
+
+                                    </div>
+                                </div>
+                                <script language=javascript>
+                                    function previewFile() {
+                                        var preview = document.querySelector('.img22');
+                                        var file  = document.querySelector('input[type=file]').files[0];
+                                        var reader = new FileReader();
+                                        reader.onloadend = function () {
+                                            preview.src = reader.result;
+                                        };
+                                        if (file) {
+                                            reader.readAsDataURL(file);
+                                        } else {
+                                            preview.src = "";
+                                        }
+                                    }
+                                </script>
+
+                                <div class="form-group">
+                                    <label for="sell_price"
+                                           class="col-sm-2 control-label no-padding-right">商品售价</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" id="title" placeholder="" name="sell_price"
+                                               required="" type="text">
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="market_price"
+                                           class="col-sm-2 control-label no-padding-right">市场价</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" id="market_price" placeholder="" name="market_price"
+                                               required="" type="text">
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="maketable"
+                                           class="col-sm-2 control-label no-padding-right">是否上架</label>
+
+                                    <div class="col-xs-4">
+                                        <label>
+                                            <input class="checkbox-slider slider-icon yesno" name="maketable"
+                                                   checked="checked" type="checkbox">
+                                            <span class="text"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="form-group">
+                                    <label for="store"
+                                           class="col-sm-2 control-label no-padding-right">库存</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" id="store" placeholder=""
+                                               name="store" type="text">
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="freez"
+                                           class="col-sm-2 control-label no-padding-right">是否冻结库存</label>
+
+                                    <div class="col-xs-4">
+                                        <label>
+                                            <input class="checkbox-slider slider-icon yesno" name="freez"
+                                                   checked="checked" type="checkbox">
+                                            <span class="text"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="keywords"
+                                           class="col-sm-2 control-label no-padding-right">关键字</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" id="keywords" placeholder=""
+                                               name="keywords" type="text">
+                                    </div>
+                                    <p class="help-block col-sm-4 red">多个关键字请用英文逗号隔开</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="keywords"
+                                           class="col-sm-2 control-label no-padding-right">选择</label>
+                                    <div class="col-sm-6">
+                                        <label style="opacity: 1;left:20px;position:relative">
+                                            <input name="sustainable" type="checkbox" style="opacity: 1;left:20px;position:static" value="true">可持续发展
+                                        </label>
+                                        <label style="opacity: 1;left:20px;position:relative">
+                                            <input name="farmer" type="checkbox" style="opacity: 1;left:20px;position: static" value="true">小农栽种
+                                        </label>
+                                        <label style="opacity: 1;left:20px;position:relative">
+                                            <input name="natural" type="checkbox" style="opacity: 1;left:20px;position:static" value="true">天然无毒
+                                        </label>
+                                        <label style="opacity: 1;left:20px;position:relative">
+                                            <input name="local" type="checkbox" style="opacity: 1;left:20px;position:static" value="true">本地食材
+                                        </label>
+                                        <label style="opacity: 1;left:20px;position:relative">
+                                            <input name="visit" type="checkbox" style="opacity: 1;left:20px;position:static" value="true">一米亲访
+                                        </label>
+                                        <label style="opacity: 1;left:20px;position:relative">
+                                            <input name="ancient" type="checkbox" style="opacity: 1;left:20px;position:static" value="true">古法手作
+                                        </label>
+                                        <label style="opacity: 1;left:20px;position:relative">
+                                            <input name="negative" type="checkbox" style="opacity: 1;left:20px;position:static" value="true">无负面添加
+                                        </label>
+                                        <label style="opacity: 1;left:20px;position:relative">
+                                            <input name="agriculture" type="checkbox" style="opacity: 1;left:20px;position:static" value="true">自然农法
+                                        </label>
+                                        <label style="opacity: 1;left:20px;position:relative">
+                                            <input name="origin" type="checkbox" style="opacity: 1;left:20px;position:static" value="true">优质产地
+                                        </label>
+                                        <label style="opacity: 1;left:20px;position:relative">
+                                            <input name="gluten" type="checkbox" style="opacity: 1;left:20px;position:static" value="true">无麸质
+                                        </label>
+                                        <label style="opacity: 1;left:20px;position:relative">
+                                            <input name="material" type="checkbox" style="opacity: 1;left:20px;position:static" value="true">纯天然原料
+                                        </label>
+                                        <label style="opacity: 1;left:20px;position:relative">
+                                            <input name="gmo" type="checkbox" style="opacity: 1;left:20px;position:static" value="true">非转基因
+                                        </label>
+                                        <label style="opacity: 1;left:20px;position:relative">
+                                            <input name="produce" type="checkbox" style="opacity: 1;left:20px;position:static" value="true">有机生产
+                                        </label>
+                                    </div>
+                                    <p class="help-block col-sm-4 red">多个关键字请用英文逗号隔开</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="desc"
+                                           class="col-sm-2 control-label no-padding-right">商品描述</label>
+                                    <div class="col-sm-6">
+                                        <textarea name="desc" class="form-control"></textarea>
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label for="is_hot"
+                                           class="col-sm-2 control-label no-padding-right">是否热销</label>
+
+                                    <div class="col-xs-4">
+                                        <label>
+                                            <input class="checkbox-slider slider-icon yesno" name="is_hot"
+                                                   checked="checked" type="checkbox">
+                                            <span class="text"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="is_new"
+                                           class="col-sm-2 control-label no-padding-right">是否新品</label>
+
+                                    <div class="col-xs-4">
+                                        <label>
+                                            <input class="checkbox-slider slider-icon yesno" name="is_new"
+                                                   checked="checked" type="checkbox">
+                                            <span class="text"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="recycle"
+                                           class="col-sm-2 control-label no-padding-right">是否删除</label>
+
+                                    <div class="col-xs-4">
+                                        <label>
+                                            <input class="checkbox-slider slider-icon yesno" name="recycle"
+                                                   checked="checked" type="checkbox">
+                                            <span class="text"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="content"
+                                           class="col-sm-2 control-label no-padding-right">商品内容</label>
+                                    <div class="col-sm-6">
+                                        <textarea name="content" id="content"></textarea>
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-default">保存信息</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>
+<script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    UE.getEditor('content',{initialFrameWidth:600,initialFrameHeight:200});
+
+
+</script>

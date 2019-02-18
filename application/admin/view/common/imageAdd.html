@@ -1,0 +1,84 @@
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <a href="{:url('Index/index')}">系统</a>
+            </li>
+            <li>
+                <a href="{:url('Image/index',['id'=>$imageAdd.goods_id])}">图片列表</a>
+            </li>
+            <li class="active">添加图片</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+
+    <!-- Page Body -->
+    <div class="page-body">
+
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="widget">
+                    <div class="widget-header bordered-bottom bordered-blue">
+                        <span class="widget-caption">添加商品</span>
+                    </div>
+                    <div class="widget-body">
+                        <div id="horizontal-form">
+                            <form class="form-horizontal" role="form" action="{:url('Goods/addImage')}" method="post" enctype="multipart/form-data">
+
+                                <div class="form-group">
+                                    <label for="goods_name"
+                                           class="col-sm-2 control-label no-padding-right">商品名称</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" id="name" placeholder="" name="goods_name"
+                                               required="" type="text" value="{$imageAdd.goods_name}" disabled>
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pic"
+                                           class="col-sm-2 control-label no-padding-right">商品图片</label>
+                                    <div class="col-sm-6">
+
+                                        <input type="file" name="pic" id="pic" onchange="previewFile()">
+                                        <img src=""  width="300" alt="" class="img22"/>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="id" value="{$imageAdd.goods_id}">
+                                <script language=javascript>
+                                    function previewFile() {
+                                        var preview = document.querySelector('.img22');
+                                        var file  = document.querySelector('input[type=file]').files[0];
+                                        var reader = new FileReader();
+                                        reader.onloadend = function () {
+                                            preview.src = reader.result;
+                                        };
+                                        if (file) {
+                                            reader.readAsDataURL(file);
+                                        } else {
+                                            preview.src = "";
+                                        }
+                                    }
+                                </script>
+
+
+
+
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-default">保存信息</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>

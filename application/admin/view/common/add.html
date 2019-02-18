@@ -1,0 +1,98 @@
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <a href="{:url('Index/index')}">系统</a>
+            </li>
+            <li>
+                <a href="{:url('Cate/index')}">分类管理</a>
+            </li>
+            <li class="active">添加分类</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+
+    <!-- Page Body -->
+    <div class="page-body">
+
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="widget">
+                    <div class="widget-header bordered-bottom bordered-blue">
+                        <span class="widget-caption">新增分类</span>
+                    </div>
+                    <div class="widget-body">
+                        <div id="horizontal-form">
+                            <form class="form-horizontal" role="form" action="{:url('Cate/addClass')}" method="post">
+                                <?php
+                                       $level=[];
+                                      for($i=0;$i<=$addData;$i++){
+                                      array_push( $level,$i);
+                                      }
+                              ?>
+                                <div class="form-group">
+                                    <label for="group_id" class="col-sm-2 control-label no-padding-right">用户角色</label>
+                                    <div class="col-sm-6">
+                                        <select name="level" style="width: 100%;"  id="level">
+                                            <option value='top'>顶级</option>
+                                            {foreach $level as $v}
+                                            <option value={$v}>第{$v}级</option>
+                                            {/foreach}
+                                        </select>
+                                        <script>
+                                            $('#level').change(function (){
+                                                var level = $("#level").val();
+//                            console.log(area_id);
+                                                $.ajax({
+                                                    data: {level: level},
+                                                    url: "{:url('Cate/getClass')}",
+                                                    success:function (d) {
+                                                        console.log(d);
+                                                        $('#cate').empty();
+                                                        for(var i=0;i<d.length;i++){
+                                                            $('#cate').append("<option value="+d[i].id+">"+d[i].name+"</option>")
+                                                        }
+                                                    }
+                                                })
+                                            })
+                                        </script>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="group_id" class="col-sm-2 control-label no-padding-right">用户角色</label>
+                                    <div class="col-sm-6">
+                                        <select name="cate" style="width: 100%;" id="cate">
+                                            <option value="0">顶级分类</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name"
+                                           class="col-sm-2 control-label no-padding-right">分类名称</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" id="name" placeholder="" name="name"
+                                               type="text">
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-default">保存信息</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>
+
+

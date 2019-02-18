@@ -1,0 +1,86 @@
+{:widget('Common/header')}
+<script type="text/javascript" src="__STATIC__/admin/style/jquery-3.2.1.js"></script>
+</head>
+<!-- /头部 -->
+
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <!-- Page Sidebar -->
+        <!--挂件菜单页-->
+        {:widget('Common/left')}
+
+        <!-- Page Content -->
+        <!--判断数据的状态切换模版-->
+        {if condition="isset($defaultArgs)"}
+        <!--挂件增改页-->
+        {:widget('Common/test')}
+        {/if}
+        {if condition="isset($addData)"}
+        <!--挂件增改页-->
+        {:widget('Common/add')}
+        {/if}
+        <!--用户加载模版-->
+        {if condition="isset($indexData)"}
+        <!--挂件列表页-->
+        {:widget('Common/lis')}
+        {/if}
+        <!--用户添加模版-->
+        {if condition="isset($aeData)"}
+        <!--挂件增改页-->
+        {:widget('Common/ae')}
+        {/if}
+        <!-- /Page Content -->
+        <!--用户加载-->
+        {if condition="isset($memberList)"}
+        <!--挂件列表页-->
+        {:widget('Common/memberList')}
+        {/if}
+        {if condition="isset($memberAe)"}
+        <!--挂件增改页-->
+        {:widget('Common/memberAe')}
+        {/if}
+        {if condition="isset($memberaE)"}
+        <!--挂件增改页-->
+        {:widget('Common/memberAe')}
+        {/if}
+        <!--商品列表-->
+        {if condition="isset($cateList)"}
+        {:widget('Common/cateList')}
+        {/if}
+        <!--商品添加-->
+        {if condition="isset($cateAe)"}
+        {:widget('Common/cateAe')}
+         {/if}
+        <!--商品管理-->
+        <!--商品列表-->
+        {if condition="isset($goodsData)"}
+        {:widget('Common/goodsData')}
+        {/if}
+        <!--商品添加-->
+        {if condition="isset($goodsAdd)"}
+        {:widget('Common/goodsAdd')}
+        {/if}
+        <!--商品编辑-->
+        {if condition="isset($goodsEdit)"}
+        {:widget('Common/goodsEdit')}
+        {/if}
+        <!--图片管理-->
+        {if condition="isset($imageData)"}
+        {:widget('Common/imageData')}
+        {/if}
+        <!--图片添加-->
+        {if condition="isset($imageAdd)"}
+        {:widget('Common/imageAdd')}
+        {/if}
+        <!--上传-->
+        {if condition="isset($ossTitle)"}
+        {:widget('Common/upload')}
+        {/if}
+<!--Basic Scripts-->
+<script src="__STATIC__/admin/style/jquery_002.js"></script>
+<script src="__STATIC__/admin/style/bootstrap.js"></script>
+<script src="__STATIC__/admin/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__STATIC__/admin/style/beyond.js"></script>
+
+</body></html>

@@ -1,0 +1,113 @@
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">系统</a>
+            </li>
+            <li>
+                <a href="{:url('Member/index')}">用户列表</a>
+            </li>
+            <li class="active">添加用户</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+
+    <!-- Page Body -->
+    <div class="page-body">
+
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="widget">
+                    {if condition="$memberAe.way eq 1"}
+                    <div class="widget-header bordered-bottom bordered-blue">
+                        <span class="widget-caption">新增用户</span>
+                    </div>
+                    <div class="widget-body">
+                        <div id="horizontal-form">
+                            <form class="form-horizontal" role="form" action="{:url('Member/add')}" method="post" enctype="multipart/form-data">
+                                {else/}
+                                <div class="widget-header bordered-bottom bordered-blue">
+                                    <span class="widget-caption">修改用户</span>
+                                </div>
+                                <div class="widget-body">
+                                    <div id="horizontal-form">
+                                        <form class="form-horizontal" role="form" action="{:url('Member/edit')}" method="post" enctype="multipart/form-data">
+                                            {/if}
+                                            <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">用户名</label>
+                                                <div class="col-sm-6">
+                                                    <input class="form-control" id="username" placeholder="" name="username" required="" type="text" value={$memberAe.username}>
+                                                </div>
+                                                <p class="help-block col-sm-4 red">* 必填</p>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="password" class="col-sm-2 control-label no-padding-right">密码</label>
+                                                <div class="col-sm-6">
+                                                    {if condition="$memberAe.way eq 1"}
+                                                    <input class="form-control" id="author" placeholder="" name="password" required="" type="text" value=''>
+                                                </div>
+                                                <p class="help-block col-sm-4 red">* 必填</p>
+                                                {else/}
+                                                <input class="form-control" id="author" placeholder="" name="password"  type="text" value=''>
+                                            </div>
+                                                {/if}
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="pic" class="col-sm-2 control-label no-padding-right">头像</label>
+                                                <div class="col-sm-6">
+                                                    <input type="file" name="pic" id="pic">
+                                                    {if condition="$memberAe.pic neq '' "}
+                                                    <img src={$memberAe.pic} alt="" width="50px">
+                                                    {elseif condition="$memberAe.way neq 1"}
+                                                    <p class="help-block col-sm-4 ">暂无头像</p>
+                                                    {/if}
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="mobile" class="col-sm-2 control-label no-padding-right">手机</label>
+                                                <div class="col-sm-6">
+                                                    <input class="form-control" id="mobile" placeholder="" name="mobile" type="text" value={$memberAe.mobile}>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="email" class="col-sm-2 control-label no-padding-right">邮箱</label>
+                                                <div class="col-sm-6">
+                                                    <input class="form-control" id="email" placeholder="" name="email" type="text" value={$memberAe.email}>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="lock" class="col-sm-2 control-label no-padding-right">是否冻结</label>
+                                                <div class="col-xs-4">
+                                                    <label>
+                                                        <input class="checkbox-slider slider-icon yesno" name="lock" {if condition="$memberAe.lock eq 1 "}checked="checked"{/if} type="checkbox">
+                                                        <span class="text"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <input type="hidden" name="member_id" value={$memberAe.member_id}>
+
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <button type="submit" class="btn btn-default">保存信息</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Page Body -->
+        </div>
+        <!-- /Page Content -->
+    </div>
+</div>
