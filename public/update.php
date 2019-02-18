@@ -1,4 +1,5 @@
 <?php
+//路径
 $target = '/home/www/luodexun';
 //密钥
 $secret = "ldx574425450";
