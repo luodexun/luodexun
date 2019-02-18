@@ -1,5 +1,5 @@
 <?php
-//路径这个是我的
+//项目路径
 $target = '/home/www/luodexun';
 //密钥
 $secret = "ldx574425450";
