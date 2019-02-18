@@ -1,5 +1,5 @@
 <?php
-$target = '/home/www/dwn';
+$target = '/home/www/luodexun';
 //密钥
 $secret = "ldx574425450";
 $json = file_get_contents('php://input');
