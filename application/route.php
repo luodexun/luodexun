@@ -12,6 +12,5 @@ use think\Route;
 $Action=request()->isOptions()?'Index/index':input("post.Action");
 $url='api/'.$Action;
 Route::domain('api',$url);
-
 Route::domain('www','admin');
 Route::domain('ldx','index');
