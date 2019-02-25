@@ -135,9 +135,11 @@
             };
             xhr.send(JSON.stringify({
                 Action:'Goods/index',
-                app_id: this.app_id,
-                key:this.key,
-                params:params
+                parms:{
+                    store: this.app_id,
+                    key:this.key,
+                    params:params
+                }
             }));
         };
     }
