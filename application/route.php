@@ -9,9 +9,8 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 use think\Route;
-dump(request());exit();
-
 $Action=request()->isOptions()?'Index/index':input("post.Action");
+dump(request());exit();
 
 
 $url='api/'.$Action;
