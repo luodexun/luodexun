@@ -136,15 +136,17 @@
             };
             xhr.send(JSON.stringify({
                 Action:'Goods/index',
-                app_id: this.app_id,
-                key:this.key,
-                params:params
+                params: {
+                    store: this.app_id,
+                    cateId:params
+                }
+
             }));
         };
     }
      document.querySelector('#submit').onclick=function () {
-         var ldx=new Client(123,456);
-         ldx.send(12314);
+         var ldx=new Client(500,456);
+         ldx.send(1);
      }
 </script>
 <script src="https://www.promisejs.org/polyfills/promise-6.1.0.js"></script>
