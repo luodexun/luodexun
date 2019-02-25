@@ -9,8 +9,11 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 use think\Route;
-dump(request());exit();
 $Action=request()->isOptions()?'Index/index':input("post.Action");
+if (request()->isPost()){
+    dump(request());exit();
+}
+
 $url='api/'.$Action;
 Route::domain('api',$url);
 Route::domain('www','admin');
