@@ -10,7 +10,7 @@
 // +----------------------------------------------------------------------
 use think\Route;
 $Action=request()->isOptions()?'Index/index':input("post.Action");
-if (request()->isPost()){
+if (request()->isAjax()){
     dump(request());exit();
 }
 
