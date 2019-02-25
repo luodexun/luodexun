@@ -130,7 +130,7 @@
     function Client(app_id,key) {
         this.app_id=app_id;
         this.key=key;
-        this.send=function (params) {
+        this.send=function (){
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'http://api.letmexiu.com', true);
             // Listen to the upload progress.
@@ -145,8 +145,7 @@
             xhr.send(JSON.stringify({
                 Action:'Aliyun/getSts',
                 app_id: this.app_id,
-                key:this.key,
-                params:params
+                key:this.key
             }));
         };
     }
