@@ -125,6 +125,7 @@
         this.send=function (params){
             var xhr = new XMLHttpRequest();
             xhr.open('post', 'http://api.letmexiu.com', true);
+            xhr.XMLHttpRequest('Content-Type','application/json');
             // Listen to the upload progress.
             var progressBar = document.querySelector('.progress');
             xhr.upload.onprogress = function(e) {
@@ -133,12 +134,12 @@
                     progressBar.textContent = progressBar.value; //有点浏览器不支持，这是后备选择
                 }
             };
-            xhr.send({
-                Action: 'Goods/index',
+            xhr.send(JSON.stringify({
+                Action:'Goods/index',
                 app_id: this.app_id,
-                key: this.key,
-                params: params
-            });
+                key:this.key,
+                params:params
+            }));
         };
     }
      document.querySelector('#submit').onclick=function () {
