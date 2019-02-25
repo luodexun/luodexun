@@ -10,10 +10,9 @@
 // +----------------------------------------------------------------------
 use think\Route;
 $Action=request()->isOptions()?'Index/index':input("post.Action");
-dump(request());exit();
-
-
 $url='api/'.$Action;
+dump(request());
 Route::domain('api',$url);
+
 Route::domain('www','admin');
 Route::domain('ldx','index');
