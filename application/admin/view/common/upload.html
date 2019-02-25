@@ -130,27 +130,26 @@
     function Client(app_id,key) {
         this.app_id=app_id;
         this.key=key;
-        this.send=kk;
-    }
-    var kk=function (params) {//定义上传文件函数
-          var xhr = new XMLHttpRequest();
-          xhr.open('POST', 'http://api.letmexiu.com', true);
-         // Listen to the upload progress.
-          var progressBar = document.querySelector('progress');
-          xhr.upload.onprogress = function(e) {
-               if (e.lengthComputable) { //lengthComputable 是 progress 的一个属性，表示资源是否可计算字节流
-                       progressBar.value = (e.loaded / e.total) * 100;
-                      progressBar.textContent = progressBar.value; //有点浏览器不支持，这是后备选择
-                     }
-               };
+        this.send=function (params) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://api.letmexiu.com', true);
+            // Listen to the upload progress.
+            var progressBar = document.querySelector('progress');
+            xhr.upload.onprogress = function(e) {
+                if (e.lengthComputable) { //lengthComputable 是 progress 的一个属性，表示资源是否可计算字节流
+                    progressBar.value = (e.loaded / e.total) * 100;
+                    progressBar.textContent = progressBar.value; //有点浏览器不支持，这是后备选择
+                }
+            };
 
-          xhr.send(JSON.stringify({
-              Action:'Aliyun/getSts',
-              app_id: this.app_id,
-              key:this.key,
-              params:params
-          }));
-        }
+            xhr.send(JSON.stringify({
+                Action:'Aliyun/getSts',
+                app_id: this.app_id,
+                key:this.key,
+                params:params
+            }));
+        };
+    }
      document.querySelectorAll('#submit').onclick=function () {
          var ldx=new Client(123,456);
          ldx.send(12314);
