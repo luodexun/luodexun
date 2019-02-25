@@ -12,7 +12,7 @@ use think\Route;
 $Action=request()->isOptions()?'Index/index':input("post.Action");
 $url='api/'.$Action;
 if(request()->isPost()){
-    dump(request());exit();
+    dump(input('post'));exit();
 }
 Route::domain('api',$url);
 
