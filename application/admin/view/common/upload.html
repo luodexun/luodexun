@@ -164,13 +164,13 @@
             var encrypt_key = timestamp;
             //加密向量16位
             var iv = 'ZZWBKJ_ZHIHUAWEI';
-
+            var data=this.encrypt(JSON.stringify({
+                store: this.app_id,
+                cateId:params
+            }), encrypt_key, iv)
             xhr.send(JSON.stringify({
                 Action:'Goods/index',
-                params: this.encrypt(JSON.stringify({
-                    store: this.app_id,
-                    cateId:params
-                }), encrypt_key, iv)
+                params: data
 
             }));
         };
