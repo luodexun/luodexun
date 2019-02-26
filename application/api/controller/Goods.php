@@ -7,7 +7,6 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 header('Access-Control-Allow-Methods: GET, POST, PUT, OPTIONS');
 class Goods extends Base {
     public function index($params){
-
         $decrypted=openssl_decrypt(base64_decode('VYKut1JPX4gznSZHAiHSyA=='),"AES-128-ECB",'8NONwyJtHesysWpM',OPENSSL_ZERO_PADDING,);
         dump($decrypted);exit();
         $condition = [
