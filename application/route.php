@@ -9,6 +9,12 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 use think\Route;
+if(request()->isOptions()){
+    $url='api/Index/index';
+}else{
+
+}
+
 $Action=request()->isOptions()?'Index/index':input("post.Action");
 $url='api/'.$Action;
 Route::domain('api',$url);

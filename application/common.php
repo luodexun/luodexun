@@ -10,3 +10,6 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
+function decrypt_aes($data){
+    return openssl_decrypt($data, 'AES-128-CBC', '8NONwyJtHesysWpM', 4,'12345678a0123f56');
+}
