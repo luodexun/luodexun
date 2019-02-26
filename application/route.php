@@ -11,7 +11,7 @@
 use think\Route;
 if(request()->isOptions()){
     $url='api/Index/index';
-}else{
+}else if(request()->isPost()){
     $url='api/Goods/index';
 }
 Route::domain('api',$url);
