@@ -6,9 +6,9 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 header('Access-Control-Allow-Methods: GET, POST, PUT, OPTIONS');
 class Goods extends Base {
-    public function index($params){
+    public function index(){
 
-        dump(phpversion());
+        dump(input());
         $decrypted = openssl_decrypt('qGsTo6wD6Mece/hfkcVsAMabKMYLSgqrSB+c8gn2m1ClHJTpEdh1T4uZ5dbdzpDUZwkw2UR+LqAJr4hKxy82AQ==', 'AES-128-CBC', '8NONwyJtHesysWpM', 4,'12345678a0123f56');
         dump($decrypted);
         dump(json_decode($decrypted,true));exit();
