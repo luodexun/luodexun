@@ -9,7 +9,7 @@ class Goods extends Base {
     public function index($params){
         $iv= md5(time(). uniqid(),true);
         dump($iv);exit();
-        $decrypted = openssl_decrypt($params, 'AES-128-ECB', 'v466vazrnpeng66r',true,$iv);
+        $decrypted = openssl_decrypt($params, 'AES-128-CBC', 'v466vazrnpeng66r',true,$iv);
         $condition = [
             'store'=> ['gt', $params['store']]
         ];
