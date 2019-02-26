@@ -134,14 +134,7 @@
                     progressBar.textContent = progressBar.value; //有点浏览器不支持，这是后备选择
                 }
             };
-            xhr.send(JSON.stringify({
-                Action:'Goods/index',
-                params: {
-                    store: this.app_id,
-                    cateId:params
-                }
-
-            }));
+            xhr.send();
         };
 
 
