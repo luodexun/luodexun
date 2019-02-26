@@ -140,6 +140,7 @@
             var encrypt_key = timestamp;
             //加密向量16位
             var iv = 'ZZWBKJ_ZHIHUAWEI';
+
             var data=CryptoJS.AES.encrypt(JSON.stringify({
                 store: this.app_id,
                 cateId:params
