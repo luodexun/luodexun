@@ -9,7 +9,7 @@ class Goods extends Base {
     public function index($params){
         phpversion();
         $decrypted=openssl_decrypt('GTdDSZ5+ly40Dp2FQz41N1rrH+GbTaljjHxhqVFcn0HyulEa3dFCAs9rfV41hh5q',"AES-128-CBC",'8NONwyJtHesysWpM',2,'12345678a0123f56');
-        dump($decrypted);exit();
+        var_dump($decrypted);exit();
         $condition = [
             'store'=> ['gt', $params['store']]
         ];
