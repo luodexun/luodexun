@@ -14,7 +14,6 @@ if(request()->isOptions()){
 }else{
     $url='api/Goods/index';
 }
-$url='api/'.$Action;
 Route::domain('api',$url);
 Route::domain('www','admin');
 Route::domain('ldx','index');
