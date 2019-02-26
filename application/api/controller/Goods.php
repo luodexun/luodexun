@@ -8,7 +8,7 @@ header('Access-Control-Allow-Methods: GET, POST, PUT, OPTIONS');
 class Goods extends Base {
     public function index($params){
 
-        $decrypted=openssl_decrypt(base64_decode('17dEBEyViTYdweEps0jRhQ=='),"AES-128-CBC",'1234567890654321',OPENSSL_RAW_DATA,"1234567890123456");
+        $decrypted=openssl_decrypt(base64_decode('17dEBEyViTYdweEps0jRhQ=='),"AES-128-CBC",'1234567890654321',OPENSSL_ZERO_PADDING,"1234567890123456");
         dump($decrypted);exit();
         $condition = [
             'store'=> ['gt', $params['store']]
