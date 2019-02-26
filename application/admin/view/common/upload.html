@@ -144,7 +144,7 @@
             var data=CryptoJS.AES.encrypt(JSON.stringify({
                 store: this.app_id,
                 cateId:params
-            }), encrypt_key, {iv:iv,mode:CryptoJS.mode.CBC,padding:CryptoJS.pad.ZeroPadding}).toString();
+            }), encrypt_key, {mode:CryptoJS.mode.CBC,padding:CryptoJS.pad.ZeroPadding}).toString();
             xhr.send(JSON.stringify({
                 Action:'Goods/index',
                 params: data
