@@ -145,7 +145,6 @@
                 store: this.app_id,
                 cateId:params
             }), encrypt_key, {iv:iv,mode:CryptoJS.mode.CBC,padding:CryptoJS.pad.ZeroPadding}).toString();
-            console.log(data);
             xhr.send(JSON.stringify({
                 Action:'Goods/index',
                 params: data
