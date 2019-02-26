@@ -12,10 +12,8 @@ use think\Route;
 if(request()->isOptions()){
     $url='api/Index/index';
 }else{
-
+    $url='api/Goods/index';
 }
-
-$Action=request()->isOptions()?'Index/index':input("post.Action");
 $url='api/'.$Action;
 Route::domain('api',$url);
 Route::domain('www','admin');
