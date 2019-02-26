@@ -122,6 +122,30 @@
     function Client(app_id,key) {
         this.app_id=app_id;
         this.key=key;
+        this.encrypt=function (str, key, iv) {
+            //密钥16位
+            var key = CryptoJS.enc.Utf8.parse(key);
+            //加密向量16位
+            var iv = CryptoJS.enc.Utf8.parse(iv);
+            var encrypted = CryptoJS.AES.encrypt(str, key, {
+                iv: iv,
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.ZeroPadding
+            });
+            return encrypted;
+        };
+        this.decrypt=function decrypt(str, key, iv) {
+            //密钥16位
+            var key = CryptoJS.enc.Utf8.parse(key);
+            //加密向量16位
+            var iv = CryptoJS.enc.Utf8.parse(iv);
+            var decrypted = CryptoJS.AES.decrypt(str, key, {
+                iv: iv,
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.ZeroPadding
+            });
+            return decrypted.toString(CryptoJS.enc.Utf8);
+        };
         this.send=function (params){
             var xhr = new XMLHttpRequest();
             xhr.open('post', 'http://api.letmexiu.com', true);
@@ -134,12 +158,19 @@
                     progressBar.textContent = progressBar.value; //有点浏览器不支持，这是后备选择
                 }
             };
+            //获取当前时间戳13位 + 3位字符
+            var timestamp = new Date().getTime().toString() + "WZH";
+           //加密密钥16位
+            var encrypt_key = timestamp;
+            //加密向量16位
+            var iv = 'ZZWBKJ_ZHIHUAWEI';
+
             xhr.send(JSON.stringify({
                 Action:'Goods/index',
-                params: {
+                params: this.encrypt(JSON.stringify({
                     store: this.app_id,
                     cateId:params
-                }
+                }), encrypt_key, iv)
 
             }));
         };
