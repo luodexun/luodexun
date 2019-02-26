@@ -137,14 +137,12 @@
             //获取当前时间戳13位 + 3位字符
             var timestamp = new Date().getTime().toString() + "WZH";
            //加密密钥16位
-            var encrypt_key = 'v466vazrnpeng66r';
+            var encrypt_key = timestamp;
             //加密向量16位
-            var key  = CryptoJS.enc.Utf8.parse(encrypt_key);
-            var iv   = CryptoJS.enc.Utf8.parse('1234567890123456');
-            var data=CryptoJS.AES.encrypt(JSON.stringify({
-                store: this.app_id,
-                cateId:params
-            }), key, {iv:iv,mode:CryptoJS.mode.CBC,padding:CryptoJS.pad.ZeroPadding}).toString();
+            var iv = 'ZZWBKJ_ZHIHUAWEI';
+            var data=CryptoJS.AES.encrypt(data, key, {iv:iv,mode:CryptoJS.mode.CBC,padding:CryptoJS.pad.ZeroPadding}).toString();
+        }
+            console.log(data);
             xhr.send(JSON.stringify({
                 Action:'Goods/index',
                 params: data
