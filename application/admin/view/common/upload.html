@@ -447,10 +447,9 @@
                 time:app.time,
                 sign:sign
             }));
-            xhr.responseType='json';
             xhr.onload = function(e) {
                 if(this.status == 200||this.status == 304){
-                    console.log(this.responseText)
+                    console.log(JSON.parse(this.responseText))
                 }
             }
             xhr.setRequestHeader('sign',CryptoJS.AES.encrypt(header, key, { iv: iv,mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7}));
