@@ -27,7 +27,7 @@ var req={
 // };
 
 var applyTokenDo = function (func) {
-    var STS=new Client(url,'WAtB3c4F','a23eca5074b2a12d7d37a55e3add898a');
+    var STS=new Client(appServer,'WAtB3c4F','a23eca5074b2a12d7d37a55e3add898a');
     STS.send({
         Action:'Aliyun/getSts',
     },function (data) {
