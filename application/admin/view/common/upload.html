@@ -436,13 +436,13 @@
                 key:this.key,
             };
             const sign=hex_md5(urlEncode(app).substring(1));
-            const header={
+            const header=CryptoJS.enc.Utf8.parse(JSON.stringify({
                 app_id:this.app_id,
                 time:app.time,
                 sign:sign
-            };
+            }));
             console.log(sign);
-            // xhr.setRequestHeader('sign',CryptoJS.AES.encrypt(urlEncode(header).substring(1), key, { iv: iv,mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7}));
+            xhr.setRequestHeader('sign',CryptoJS.AES.encrypt(header, key, { iv: iv,mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7}));
             var data=CryptoJS.enc.Utf8.parse(JSON.stringify({
                 Action:'Goods/index',
                 params: {
