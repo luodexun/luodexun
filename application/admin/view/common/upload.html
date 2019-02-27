@@ -420,7 +420,13 @@
         }
         return paramStr;
     };
-    // 对象封装
+
+    /**
+     * 对象封装
+     * @param  app_id
+     * @param key
+     * @constructor
+     */
     function Client(app_id,key) {
         this.app_id=app_id;
         this.key=key;
@@ -441,12 +447,8 @@
                 time:app.time,
                 sign:sign
             }));
-            console.log(sign);
             xhr.setRequestHeader('sign',CryptoJS.AES.encrypt(header, key, { iv: iv,mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7}));
             var data=CryptoJS.enc.Utf8.parse(JSON.stringify(params));
-            console.log(sign.substr(0,16));
-            console.log(sign.substr(16,16));
-            console.log(data);
             var encrypted = CryptoJS.AES.encrypt(data, CryptoJS.enc.Utf8.parse(sign.substr(0,16)), { iv: CryptoJS.enc.Utf8.parse(sign.substr(16,16)),mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7});
             xhr.send(encrypted);
         };
