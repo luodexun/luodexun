@@ -9,7 +9,7 @@ class Goods extends Base {
     public function index(){
 
         $decrypted = openssl_decrypt(header('sign'), 'AES-128-CBC', '07bad5311d5108d4', 4,'fbd19b9cae6615a1');
-        dump(header('sign'));
+        dump(request()->header());
         dump($decrypted);
         dump(json_decode($decrypted,true));exit();
         $condition = [
