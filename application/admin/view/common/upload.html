@@ -431,7 +431,7 @@
             var key = CryptoJS.enc.Utf8.parse("07bad5311d5108d4");
             var iv  = CryptoJS.enc.Utf8.parse('fbd19b9cae6615a1');
             var app={
-                id:this.app_id,
+                app_id:this.app_id,
                 time:new Date().getTime(),
                 key:this.key,
             };
@@ -451,15 +451,12 @@
                 }
 
             }));
-            console.log(sign.substr(0,16));
-            console.log(sign.substr(16,16));
-            console.log(data);
-            var encrypted = CryptoJS.AES.encrypt(data, key, { iv: iv,mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7});
+            var encrypted = CryptoJS.AES.encrypt(data, sign.substr(0,16), { iv: sign.substr(16,16),mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7});
             xhr.send(encrypted);
         };
     }
      document.querySelector('#submit').onclick=function () {
-         var ldx=new Client('121314','a23eca5074b2a12d7d37a55e3add898a');
+         var ldx=new Client('WAtB3c4F','a23eca5074b2a12d7d37a55e3add898a');
          ldx.send(3);
      }
 </script>
