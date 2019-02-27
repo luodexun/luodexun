@@ -451,7 +451,9 @@
                 }
 
             }));
-            // var encrypted = CryptoJS.AES.encrypt(data, sign.substr(0,16), { iv: sign.substr(16,16),mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7});
+            console.log(sign.substr(16,16));
+            console.log(sign.substr(16,16);
+            var encrypted = CryptoJS.AES.encrypt(data, sign.substr(0,16), { iv: sign.substr(16,16),mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7});
             xhr.send(encrypted);
         };
     }
