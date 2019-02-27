@@ -442,7 +442,7 @@
                 sign:sign
             };
             console.log(sign);
-            xhr.setRequestHeader('sign',CryptoJS.AES.encrypt(urlEncode(header).substring(1), key, { iv: iv,mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7}));
+            // xhr.setRequestHeader('sign',CryptoJS.AES.encrypt(urlEncode(header).substring(1), key, { iv: iv,mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7}));
             var data=CryptoJS.enc.Utf8.parse(JSON.stringify({
                 Action:'Goods/index',
                 params: {
