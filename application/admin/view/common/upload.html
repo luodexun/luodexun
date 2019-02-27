@@ -399,8 +399,27 @@
         }
         return str;
     }
-
-    console.log(hex_md5('dwn'));
+    /**
+     * url字符串生成函数
+     * @param param
+     * @param key
+     * @param encode
+     * @returns {string}
+     */
+    var urlEncode =function (param, key, encode) {
+        if(param==null) return '';
+        var paramStr = '';
+        var t = typeof (param);
+        if (t == 'string' || t == 'number' || t == 'boolean') {
+            paramStr += '&' + key + '=' + ((encode==null||encode) ? encodeURIComponent(param) : param);
+        } else {
+            for (var i in param) {
+                var k = key == null ? i : key + (param instanceof Array ? '[' + i + ']' : '.' + i);
+                paramStr += urlEncode(param[i], k, encode);
+            }
+        }
+        return paramStr;
+    };
     // 对象封装
     function Client(app_id,key) {
         this.app_id=app_id;
@@ -409,15 +428,21 @@
             var xhr = new XMLHttpRequest();
             xhr.open('post', 'http://api.letmexiu.com', true);
             // Listen to the upload progress.
-            var progressBar = document.querySelector('.progress');
-            xhr.upload.onprogress = function(e) {
-                if (e.lengthComputable) { //lengthComputable 是 progress 的一个属性，表示资源是否可计算字节流
-                    progressBar.value = (e.loaded / e.total) * 100;
-                    progressBar.textContent = progressBar.value; //有点浏览器不支持，这是后备选择
-                }
+            var key = CryptoJS.enc.Utf8.parse("07bad5311d5108d4");
+            var iv  = CryptoJS.enc.Utf8.parse('fbd19b9cae6615a1');
+            var app={
+                app_id:this.app_id,
+                time:new Date().getTime(),
+                key:this.key,
             };
-            var key = CryptoJS.enc.Utf8.parse("8NONwyJtHesysWpM");
-            var iv  = CryptoJS.enc.Utf8.parse('12345678a0123f56');
+            const sign=hex_md5(urlEncode(app).substring(1));
+            const header={
+                app_id:this.app_id,
+                time:app.time,
+                sign:sign
+            };
+            console.log(sign);
+            xhr.setRequestHeader('sign',CryptoJS.AES.encrypt(urlEncode(header).substring(1), key, { iv: iv,mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7}));
             var data=CryptoJS.enc.Utf8.parse(JSON.stringify({
                 Action:'Goods/index',
                 params: {
@@ -426,13 +451,13 @@
                 }
 
             }));
-            var encrypted = CryptoJS.AES.encrypt(data, key, { iv: iv,mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7});
+            var encrypted = CryptoJS.AES.encrypt(data, sign.substr(0,16), { iv: sign.substr(16,16),mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7});
             xhr.send(encrypted);
         };
     }
      document.querySelector('#submit').onclick=function () {
-         var ldx=new Client(500,456);
-         ldx.send(1);
+         var ldx=new Client('WAtB3c4F','a23eca5074b2a12d7d37a55e3add898a');
+         ldx.send(3);
      }
 </script>
 <script src="https://www.promisejs.org/polyfills/promise-6.1.0.js"></script>
