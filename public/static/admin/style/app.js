@@ -27,32 +27,22 @@ var req={
 // };
 
 var applyTokenDo = function (func) {
-  var url = appServer;
-    $.ajax({
-        url:url,
-        type:'POST',
-        timeout: 10000, // 超时时间 10 秒
-        headers: {
-            'Content-Type':'application/json'
-        },
-        data:JSON.stringify(req),
-        success: function(data){
-          if(data.returnCode=1000){
-              var creds=data.returnData;
-              var client = new OSS({
-                  region: region,
-                  accessKeyId: creds.AccessKeyId,
-                  accessKeySecret: creds.AccessKeySecret,
-                  stsToken: creds.SecurityToken,
-                  bucket: bucket
-              })
-              return func(client);
-          }
-
+    var STS=new Client(url,'WAtB3c4F','a23eca5074b2a12d7d37a55e3add898a');
+    STS.send({
+        Action:'Aliyun/getSts',
+    },function (data) {
+        if(data.returnCode=1000){
+            var creds=data.returnData;
+            var client = new OSS({
+                region: region,
+                accessKeyId: creds.AccessKeyId,
+                accessKeySecret: creds.AccessKeySecret,
+                stsToken: creds.SecurityToken,
+                bucket: bucket
+            });
+            return func(client);
         }
-    });
-
-
+    })
 };
 
 var progress = function (p) {

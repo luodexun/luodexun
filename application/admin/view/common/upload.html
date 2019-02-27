@@ -427,12 +427,12 @@
      * @param key
      * @constructor
      */
-    function Client(app_id,key) {
+    function Client(url,app_id,key) {
         this.app_id=app_id;
         this.key=key;
         this.send=function (params,success){
             var xhr = new XMLHttpRequest();
-            xhr.open('post', 'http://api.letmexiu.com', true);
+            xhr.open('post', url, true);
             // Listen to the upload progress.
             var key = CryptoJS.enc.Utf8.parse("07bad5311d5108d4");
             var iv  = CryptoJS.enc.Utf8.parse('fbd19b9cae6615a1');
@@ -449,7 +449,7 @@
             }));
             xhr.onload = function(e) {
                 if(this.status == 200||this.status == 304){
-                    success(this.responseText);
+                    success(JSON.parse(this.responseText));
                 }
             }
             xhr.setRequestHeader('sign',CryptoJS.AES.encrypt(header, key, { iv: iv,mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7}));
@@ -459,7 +459,7 @@
         };
     }
      document.querySelector('#submit').onclick=function () {
-         var ldx=new Client('WAtB3c4F','a23eca5074b2a12d7d37a55e3add898a');
+         var ldx=new Client('http://api.letmexiu.com','WAtB3c4F','a23eca5074b2a12d7d37a55e3add898a');
          ldx.send({
              Action:'Goods/index',
              params: {
