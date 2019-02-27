@@ -3,15 +3,10 @@ namespace app\api\controller;
 use app\model\apiData\goodsData;
 //ajax 跨域访问
 header('Access-Control-Allow-Origin: *');
-header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, sign");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 header('Access-Control-Allow-Methods: GET, POST, PUT, OPTIONS');
 class Goods extends Base {
-    public function index(){
-
-        $decrypted = openssl_decrypt(request()->header('sign'), 'AES-128-CBC', '07bad5311d5108d4', 4,'fbd19b9cae6615a1');
-        dump(request()->header('sign'));
-        dump($decrypted);
-        dump(json_decode($decrypted,true));exit();
+    public function index($params){
         $condition = [
             'store'=> ['gt', $params['store']]
         ];
