@@ -3,7 +3,7 @@ namespace app\api\controller;
 use app\model\apiData\goodsData;
 //ajax 跨域访问
 header('Access-Control-Allow-Origin: *');
-header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, sign");
 header('Access-Control-Allow-Methods: GET, POST, PUT, OPTIONS');
 class Goods extends Base {
     public function index($params){
