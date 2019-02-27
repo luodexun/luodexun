@@ -14,7 +14,7 @@ $url=null;
 if(request()->isOptions()){
     $url='api/Index/index';
 }else if(request()->isPost()){
-    $address=&$url;
+    $address=['url'=>&$url];
     $aes=new Load();
     $aes->run($address);
 }
