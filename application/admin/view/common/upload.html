@@ -430,7 +430,7 @@
     function Client(app_id,key) {
         this.app_id=app_id;
         this.key=key;
-        this.send=function (params){
+        this.send=function (params,success){
             var xhr = new XMLHttpRequest();
             xhr.open('post', 'http://api.letmexiu.com', true);
             // Listen to the upload progress.
@@ -449,7 +449,7 @@
             }));
             xhr.onload = function(e) {
                 if(this.status == 200||this.status == 304){
-                    console.log(JSON.parse(this.responseText))
+                    success(this.responseText);
                 }
             }
             xhr.setRequestHeader('sign',CryptoJS.AES.encrypt(header, key, { iv: iv,mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7}));
@@ -466,6 +466,8 @@
                  store: 500
              }
 
+         },function (data) {
+             console.log(data)
          });
      }
 </script>
