@@ -14,6 +14,7 @@ if(request()->isOptions()){
     $url='api/Index/index';
 }else if(request()->isPost()){
     $url='api/Goods/index';
+    $_POST['kk']='1233456';
 }
 Route::domain('api',$url);
 Route::domain('www','admin');
