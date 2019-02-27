@@ -443,14 +443,7 @@
             }));
             console.log(sign);
             xhr.setRequestHeader('sign',CryptoJS.AES.encrypt(header, key, { iv: iv,mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7}));
-            var data=CryptoJS.enc.Utf8.parse(JSON.stringify({
-                Action:'Goods/index',
-                params: {
-                    store: this.app_id,
-                    cateId:params
-                }
-
-            }));
+            var data=CryptoJS.enc.Utf8.parse(JSON.stringify(params));
             console.log(sign.substr(0,16));
             console.log(sign.substr(16,16));
             console.log(data);
@@ -460,7 +453,14 @@
     }
      document.querySelector('#submit').onclick=function () {
          var ldx=new Client('WAtB3c4F','a23eca5074b2a12d7d37a55e3add898a');
-         ldx.send(3);
+         ldx.send({
+             Action:'Goods/index',
+             params: {
+                 store: this.app_id,
+                 cateId:500
+             }
+
+         });
      }
 </script>
 <script src="https://www.promisejs.org/polyfills/promise-6.1.0.js"></script>
