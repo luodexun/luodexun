@@ -9,6 +9,7 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 use think\Route;
+$url=null;
 if(request()->isOptions()){
     $url='api/Index/index';
 }else if(request()->isPost()){
