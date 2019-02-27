@@ -13,8 +13,10 @@ $url=null;
 if(request()->isOptions()){
     $url='api/Index/index';
 }else if(request()->isPost()){
-    $url='api/Goods/index';
-    $_POST['kk']='1233456';
+    $decrypted = openssl_decrypt(file_get_contents("php://input"), 'AES-128-CBC', '8NONwyJtHesysWpM', 4,'12345678a0123f56');
+    $data=json_decode($decrypted,true);
+    $url='api/'.$data['Action'];
+    $_POST['params']=$data['params'];
 }
 Route::domain('api',$url);
 Route::domain('www','admin');
