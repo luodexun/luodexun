@@ -12,6 +12,7 @@ class Base {
              response('拒绝访问','401',['Content-Type'=>'text/plain;charset=UTF-8'],'text');
          }
          $sign=md5(http_build_query(['app_id'=>session('app_id'),'time'=>session('time'),'key'=>'a23eca5074b2a12d7d37a55e3add898a']));
+         dump(session('sign'));
          dump($sign);exit();
          if(session('sign')!==$sign){
              response('拒绝访问','401',['Content-Type'=>'text/plain;charset=UTF-8'],'text');
