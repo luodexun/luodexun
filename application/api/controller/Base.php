@@ -2,18 +2,18 @@
 
 namespace app\api\controller;
 class Base {
-
+    use Send;
     protected $code = 0;
     protected $_retValue = 0;
     protected $_retMsg = "";  //返回消息
     protected $_data =array();
     public function __construct() {
-         if(time()-intval(session('time'))>3600){
-             response('拒绝访问','401',['Content-Type'=>'text/plain;charset=UTF-8'],'text');die();
+         if(time()-intval(session('time'))>30){
+             self::returnMsg(401,'请求时间戳与服务器时间戳异常，请调整本地时间！');
          }
          $sign=md5(http_build_query(['app_id'=>session('app_id'),'time'=>session('time'),'key'=>'a23eca5074b2a12d7d37a55e3add898a']));
          if(session('sign')!==$sign){
-             response('拒绝访问','401',['Content-Type'=>'text/plain;charset=UTF-8'],'text');die();
+             self::returnMsg(401,'签名验证错误！！！请检查签名的合法性。');
          }
     }
     /**
