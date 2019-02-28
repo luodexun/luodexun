@@ -8,6 +8,7 @@ class Base {
     protected $_retMsg = "";  //返回消息
     protected $_data =array();
     public function __construct() {
+        dump(intval(time()));dump(session('time'));dump(intval(time())-intval(session('time')));exit();
          if(intval(time())-intval(session('time'))>30){
              self::returnMsg(401,'请求时间戳与服务器时间戳异常，请调整本地时间！');
          }
