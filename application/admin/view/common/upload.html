@@ -112,8 +112,6 @@
                         <a href="https://github.com/ali-sdk/ali-oss">ali-oss</a></td>
                 </tr>
             </table>
-            <button class="btn btn-success" id="submit">发送</button>
-            <input value="0" class="progress"/>
         </div>
     </div>
     <!-- /Page Body -->
@@ -458,18 +456,6 @@
             xhr.send(encrypted);
         };
     }
-     document.querySelector('#submit').onclick=function () {
-         var ldx=new Client('http://api.letmexiu.com','WAtB3c4F','a23eca5074b2a12d7d37a55e3add898a');
-         ldx.send({
-             Action:'Goods/index',
-             params: {
-                 store: 500
-             }
-
-         },function (data) {
-             console.log(JSON.parse(data))
-         });
-     }
 </script>
 <script src="https://www.promisejs.org/polyfills/promise-6.1.0.js"></script>
 <script type="text/javascript" src="https://gosspublic.alicdn.com/aliyun-oss-sdk.min.js"></script>
