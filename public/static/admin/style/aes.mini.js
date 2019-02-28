@@ -317,7 +317,7 @@ function Client(url,app_id,key) {
         var iv  = CryptoJS.enc.Utf8.parse('fbd19b9cae6615a1');
         var app={
             app_id:this.app_id,
-            time:Date.parse( new Date() ).toString().substr(0,10),
+            time:Math.round(new Date().getTime()/1000).toString(),
             key:this.key,
         };
         const sign=hex_md5(urlEncode(app).substring(1));
