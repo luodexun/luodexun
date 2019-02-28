@@ -33,6 +33,7 @@
         <script src="__STATIC__/admin/style/aes.mini.js"></script>
         <script type="text/javascript">
             $(function(){
+                var api=new Client('http://api.letmexiu.com','WAtB3c4F','a23eca5074b2a12d7d37a55e3add898a');
                 $("#execute").click(function(){
                     var service = $("#service").val();
                     if(!service){
@@ -41,24 +42,12 @@
                     }
                     $("#result").html("loading....");
                     var req=$.parseJSON(service);
-                    $.ajax({
-                        type:'POST',
-                        timeout: 10000, // 超时时间 10 秒
-                        headers: {
-                            'Content-Type':'application/x-www-form-urlencoded'
-                        },
-                        url: 'http://api.letmexiu.com',
-                        data:req,
-                        success: function(data) {
+                    api.send(req,function (data) {
+                        if(data.returnCode=1000){
                             var html= JSON.stringify(data,null,2);
                             $("#result").html("<textarea name='result' rows=30 cols=120 style='font-size: 13px;color: black'>"+html+"</textarea>");
-                        },
-                        error: function(err) {
-                        },
-                        complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数　
                         }
                     })
-                    return false;
                 });
             });
         </script>
