@@ -9,7 +9,6 @@ class Base {
     protected $_data =array();
     public function __construct() {
          if(intval(time())-intval(session('time'))>30){
-             dump(intval(time()));dump(intval(session('time')));dump(intval(time())-intval(session('time'))>30);exit();
              self::returnMsg(401,'请求时间戳与服务器时间戳异常，请调整本地时间！');
          }
          $sign=md5(http_build_query(['app_id'=>session('app_id'),'time'=>session('time'),'key'=>'a23eca5074b2a12d7d37a55e3add898a']));
