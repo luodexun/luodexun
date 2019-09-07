@@ -14,6 +14,7 @@ class Aliyun extends Base {
         return $this->setCode(1000)->setMsg('数据请求成功')->setData($data)->renderOutput();
     }
 
+    qqqqqqqqqq
     public function senMsg($params){
         $code='';
         $outId='';
