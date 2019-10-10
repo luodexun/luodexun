@@ -21,7 +21,8 @@
         "topthink/think-captcha": "1.*",
         "topthink/think-image": "^1.0",
         "topthink/think-worker": "1.0.*",
-        "endroid/qr-code": "^3.5"
+        "endroid/qr-code": "^3.5",
+        "dwn/partner-client": "^1.0"
     },
     "extra": {
         "think-path": "thinkphp"
