@@ -1,6 +1,5 @@
 <?php
 namespace app\index\controller;
-use app\index\model\Goods;
 use dwn\Express;
 class Index extends Base{
     public function test(){
@@ -8,6 +7,7 @@ class Index extends Base{
         $res=$client->setOption('ratio')->execute();
         dump($res);exit();
     }
+
     public function index()
     {
         $nu=[];
