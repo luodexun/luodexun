@@ -1,7 +1,13 @@
 <?php
 namespace app\index\controller;
 use app\index\model\Goods;
+use dwn\Express;
 class Index extends Base{
+    public function test(){
+        $client=new Express('8sGzEk3g','e3f327599d218ff2fcebb23d6f944965');
+        $res=$client->setOption('ratio')->execute();
+        dump($res);exit();
+    }
     public function index()
     {
         $nu=[];
