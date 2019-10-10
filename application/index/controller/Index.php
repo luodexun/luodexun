@@ -1,13 +1,13 @@
 <?php
 namespace app\index\controller;
+use app\index\model\Goods;
 use dwn\Express;
 class Index extends Base{
     public function test(){
         $client=new Express('8sGzEk3g','e3f327599d218ff2fcebb23d6f944965');
-        $res=$client->setOption('ratio')->execute();
+        $res=$client->setOption('ratio')->setParams(["authorization_code"=>"45e8c62cmchihijng9lv5okk1i"])->execute();
         dump($res);exit();
     }
-
     public function index()
     {
         $nu=[];
