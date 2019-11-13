@@ -4,61 +4,26 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitd42a453296c3a0bd9662130a3ded6fd0
+class ComposerStaticInit8e4798a00747b152f9a9aaa84371dd14
 {
     public static $files = array (
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        'a9ed0d27b5a698798a89181429f162c5' => __DIR__ . '/..' . '/khanamiryan/qrcode-detector-decoder/lib/Common/customFunctions.php',
         '1cfd2761b63b0a29ed23657ea394cb2d' => __DIR__ . '/..' . '/topthink/think-captcha/src/helper.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         't' => 
         array (
-            'think\\worker\\' => 13,
             'think\\composer\\' => 15,
             'think\\captcha\\' => 14,
             'think\\' => 6,
         ),
-        'Z' => 
+        'd' => 
         array (
-            'Zxing\\' => 6,
-        ),
-        'W' => 
-        array (
-            'Workerman\\' => 10,
-        ),
-        'S' => 
-        array (
-            'Symfony\\Polyfill\\Ctype\\' => 23,
-            'Symfony\\Component\\PropertyAccess\\' => 33,
-            'Symfony\\Component\\OptionsResolver\\' => 34,
-            'Symfony\\Component\\Inflector\\' => 28,
-        ),
-        'M' => 
-        array (
-            'MyCLabs\\Enum\\' => 13,
-        ),
-        'E' => 
-        array (
-            'Endroid\\QrCode\\' => 15,
-            'Endroid\\Installer\\' => 18,
-        ),
-        'D' => 
-        array (
-            'DASPRiD\\Enum\\' => 13,
-        ),
-        'B' => 
-        array (
-            'BaconQrCode\\' => 12,
+            'dwn\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'think\\worker\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/topthink/think-worker/src',
-        ),
         'think\\composer\\' => 
         array (
             0 => __DIR__ . '/..' . '/topthink/think-installer/src',
@@ -72,57 +37,17 @@ class ComposerStaticInitd42a453296c3a0bd9662130a3ded6fd0
             0 => __DIR__ . '/../..' . '/thinkphp/library/think',
             1 => __DIR__ . '/..' . '/topthink/think-image/src',
         ),
-        'Zxing\\' => 
+        'dwn\\' => 
         array (
-            0 => __DIR__ . '/..' . '/khanamiryan/qrcode-detector-decoder/lib',
-        ),
-        'Workerman\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/workerman/workerman',
-        ),
-        'Symfony\\Polyfill\\Ctype\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
-        ),
-        'Symfony\\Component\\PropertyAccess\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/property-access',
-        ),
-        'Symfony\\Component\\OptionsResolver\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/options-resolver',
-        ),
-        'Symfony\\Component\\Inflector\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/inflector',
-        ),
-        'MyCLabs\\Enum\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/myclabs/php-enum/src',
-        ),
-        'Endroid\\QrCode\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/endroid/qr-code/src',
-        ),
-        'Endroid\\Installer\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/endroid/installer/src',
-        ),
-        'DASPRiD\\Enum\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dasprid/enum/src',
-        ),
-        'BaconQrCode\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/bacon/bacon-qr-code/src',
+            0 => __DIR__ . '/..' . '/dwn/partner-client/src',
         ),
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitd42a453296c3a0bd9662130a3ded6fd0::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitd42a453296c3a0bd9662130a3ded6fd0::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit8e4798a00747b152f9a9aaa84371dd14::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit8e4798a00747b152f9a9aaa84371dd14::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }
