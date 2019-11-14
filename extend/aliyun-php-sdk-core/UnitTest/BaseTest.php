@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -17,27 +18,32 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 class BaseTest extends PHPUnit_Framework_TestCase
 {
-	public $client = null;
-	function setUp()
-	{
-		$path = substr(dirname(__FILE__), 0,strripos(dirname(__FILE__),DIRECTORY_SEPARATOR)).DIRECTORY_SEPARATOR;
-		include_once $path.'Config.php';
-		include_once 'Ecs/Rquest/DescribeRegionsRequest.php';
-		include_once 'BatchCompute/ListImagesRequest.php';
+    /**
+     * @var null
+     */
+    public $client = null;
 
-		$iClientProfile = DefaultProfile::getProfile("cn-hangzhou", "5slyhuy4sv30bmppvgew0rps", "NGYL1I7hXC6SgSqkcE5DJdPgJM8=");
-		$this->client = new DefaultAcsClient($iClientProfile);
-	}
-	
-	function getProperty($propertyKey)
-	{
-		$accessKey = "";
-		$accessSecret = "";
-		$iClientProfile = DefaultProfile::getProfile("cn-hangzhou", "5slyhuy4sv30bmppvgew0rps", "NGYL1I7hXC6SgSqkcE5DJdPgJM8=");
-		
-	
-	}
-	
+    public function setUp()
+    {
+        $path = substr(__DIR__, 0, strripos(__DIR__, DIRECTORY_SEPARATOR)) . DIRECTORY_SEPARATOR;
+        include_once $path . 'Config.php';
+        include_once 'Ecs/Rquest/DescribeRegionsRequest.php';
+        include_once 'BatchCompute/ListImagesRequest.php';
+
+        $iClientProfile = DefaultProfile::getProfile("cn-hangzhou", "AccessKey", "AccessSecret");
+        $this->client   = new DefaultAcsClient($iClientProfile);
+    }
+
+    /**
+     * @param $propertyKey
+     */
+    public function getProperty($propertyKey)
+    {
+        $accessKey      = "";
+        $accessSecret   = "";
+        $iClientProfile = DefaultProfile::getProfile("cn-hangzhou", "AccessKey", "AccessSecret");
+    }
 }

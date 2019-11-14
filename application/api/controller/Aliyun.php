@@ -10,8 +10,9 @@ use  app\index\model\Sms;
 include(ROOT_PATH."extend/sts.php");
 class Aliyun extends Base {
     public function getSts(){
-        $data=sts();
-        return $this->setCode(1000)->setMsg('数据请求成功')->setData($data)->renderOutput();
+        $sts = new \AliYun\Sts();
+        $res = $sts->getSts();
+        return $this->setCode(1000)->setMsg('数据请求成功')->setData($res['data'])->renderOutput();
     }
     public function senMsg($params){
         $code='';

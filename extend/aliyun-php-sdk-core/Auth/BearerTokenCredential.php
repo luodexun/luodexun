@@ -19,54 +19,60 @@
  * under the License.
  */
 
-class HttpResponse
+class BearerTokenCredential extends AbstractCredential
 {
     /**
      * @var string
      */
-    private $body;
+    private $bearerToken;
+
     /**
-     * @var string
+     * BearerTokenCredential constructor.
+     *
+     * @param $bearerToken
      */
-    private $status;
+    public function __construct($bearerToken)
+    {
+        $this->bearerToken = $bearerToken;
+    }
+
+    /**
+     * @return null
+     */
+    public function getAccessKeyId()
+    {
+        return null;
+    }
+
+    /**
+     * @return null
+     */
+    public function getAccessSecret()
+    {
+        return null;
+    }
 
     /**
      * @return string
      */
-    public function getBody()
+    public function getBearerToken()
     {
-        return $this->body;
+        return $this->bearerToken;
     }
 
     /**
-     * @param $body
+     * @param $bearerToken
      */
-    public function setBody($body)
+    public function setBearerToken($bearerToken)
     {
-        $this->body = $body;
+        $this->bearerToken = $bearerToken;
     }
 
     /**
-     * @return string
+     * @return null
      */
-    public function getStatus()
+    public function getSecurityToken()
     {
-        return $this->status;
-    }
-
-    /**
-     * @param $status
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isSuccess()
-    {
-        return 200 <= $this->status && 300 > $this->status;
+        return null;
     }
 }

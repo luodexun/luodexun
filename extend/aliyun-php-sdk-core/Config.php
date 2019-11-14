@@ -19,16 +19,18 @@
  */
 include_once 'Autoloader/Autoloader.php';
 include_once 'Regions/EndpointConfig.php';
-
-//config sdk auto load path.
-Autoloader::addAutoloadPath("aliyun-php-sdk-ecs");
-Autoloader::addAutoloadPath("aliyun-php-sdk-batchcompute");
-Autoloader::addAutoloadPath("aliyun-php-sdk-sts");
-Autoloader::addAutoloadPath("aliyun-php-sdk-ram");
-Autoloader::addAutoloadPath("aliyun-php-sdk-ubsms");
-Autoloader::addAutoloadPath("aliyun-php-sdk-ubsms-inner");
-
-//config http proxy	
-define('ENABLE_HTTP_PROXY', FALSE);
+include_once 'Regions/LocationService.php';
+Autoloader::loadDirectories();
+//config http proxy
+/**
+ *
+ */
+define('ENABLE_HTTP_PROXY', false);
+/**
+ *
+ */
 define('HTTP_PROXY_IP', '127.0.0.1');
+/**
+ *
+ */
 define('HTTP_PROXY_PORT', '8888');

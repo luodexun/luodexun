@@ -17,15 +17,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 namespace UnitTest\BatchCompute\Request;
 
 class ListImagesRequest extends \RoaAcsRequest
 {
-	function  __construct()
-	{
-		parent::__construct("BatchCompute", "2013-01-11", "ListImages");
-		$this->setUriPattern("/images");
-		$this->setMethod("GET");
-	}
-	
+    public function __construct()
+    {
+        parent::__construct("BatchCompute", "2013-01-11", "ListImages");
+        $this->setUriPattern("/images");
+        $this->setMethod("GET");
+    }
 }

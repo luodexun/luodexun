@@ -19,17 +19,40 @@
  * under the License.
  */
 
-interface IClientProfile
+class BearTokenSigner implements ISigner
 {
-    public function getSigner();
+    /**
+     * @param $source
+     * @param $accessSecret
+     *
+     * @return null
+     */
+    public function signString($source, $accessSecret)
+    {
+        return null;
+    }
 
-    public function getRegionId();
+    /**
+     * @return null
+     */
+    public function getSignatureMethod()
+    {
+        return null;
+    }
 
-    public function getFormat();
+    /**
+     * @return string
+     */
+    public function getSignatureVersion()
+    {
+        return '1.0';
+    }
 
-    public function getCredential();
-
-    public function isRamRoleArn();
-
-    public function isEcsRamRole();
+    /**
+     * @return string
+     */
+    public function getSignatureType()
+    {
+        return 'BEARERTOKEN';
+    }
 }

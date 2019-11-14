@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -17,46 +18,81 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 class Endpoint
 {
-	private $name;
-	private $regionIds; 
-	private $productDomains;
-	
-	function  __construct($name, $regionIds, $productDomains)
-	{
-		$this->name = $name;
-		$this->regionIds = $regionIds;
-		$this->productDomains = $productDomains;
-	}
-	
-	public function getName()
-	{
-		return $this->name;
-	}
-	
-	public function setName($name)
-	{
-		$this->name = $name;
-	}
-	
-	public function getRegionIds()
-	{
-		return $this->regionIds;
-	}
-	
-	public function setRegionIds($regionIds)
-	{
-		$this->regionIds = $regionIds;
-	}
-	
-	public function getProductDomains()
-	{
-		return $this->productDomains;
-	}
-	
-	public function setProductDomains($productDomains)
-	{
-		$this->productDomains = $productDomains;
-	}
+    /**
+     * @var string
+     */
+    private $name;
+    /**
+     * @var string
+     */
+    private $regionIds;
+    /**
+     * @var string
+     */
+    private $productDomains;
+
+    /**
+     * Endpoint constructor.
+     *
+     * @param $name
+     * @param $regionIds
+     * @param $productDomains
+     */
+    public function __construct($name, $regionIds, $productDomains)
+    {
+        $this->name           = $name;
+        $this->regionIds      = $regionIds;
+        $this->productDomains = $productDomains;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRegionIds()
+    {
+        return $this->regionIds;
+    }
+
+    /**
+     * @param $regionIds
+     */
+    public function setRegionIds($regionIds)
+    {
+        $this->regionIds = $regionIds;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductDomains()
+    {
+        return $this->productDomains;
+    }
+
+    /**
+     * @param $productDomains
+     */
+    public function setProductDomains($productDomains)
+    {
+        $this->productDomains = $productDomains;
+    }
 }

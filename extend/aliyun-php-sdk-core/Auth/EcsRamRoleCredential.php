@@ -19,54 +19,60 @@
  * under the License.
  */
 
-class HttpResponse
+class EcsRamRoleCredential extends AbstractCredential
 {
     /**
      * @var string
      */
-    private $body;
+    private $roleName;
+
     /**
-     * @var string
+     * EcsRamRoleCredential constructor.
+     *
+     * @param $roleName
      */
-    private $status;
+    public function __construct($roleName)
+    {
+        $this->roleName = $roleName;
+    }
+
+    /**
+     * @return null
+     */
+    public function getAccessKeyId()
+    {
+        return null;
+    }
+
+    /**
+     * @return null
+     */
+    public function getAccessSecret()
+    {
+        return null;
+    }
 
     /**
      * @return string
      */
-    public function getBody()
+    public function getRoleName()
     {
-        return $this->body;
+        return $this->roleName;
     }
 
     /**
-     * @param $body
+     * @param $roleName
      */
-    public function setBody($body)
+    public function setRoleName($roleName)
     {
-        $this->body = $body;
+        $this->roleName = $roleName;
     }
 
     /**
-     * @return string
+     * @return null
      */
-    public function getStatus()
+    public function getSecurityToken()
     {
-        return $this->status;
-    }
-
-    /**
-     * @param $status
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isSuccess()
-    {
-        return 200 <= $this->status && 300 > $this->status;
+        return null;
     }
 }

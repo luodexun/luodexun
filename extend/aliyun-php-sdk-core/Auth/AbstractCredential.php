@@ -19,17 +19,11 @@
  * under the License.
  */
 
-interface IClientProfile
+abstract class AbstractCredential
 {
-    public function getSigner();
+    abstract public function getAccessKeyId();
 
-    public function getRegionId();
+    abstract public function getAccessSecret();
 
-    public function getFormat();
-
-    public function getCredential();
-
-    public function isRamRoleArn();
-
-    public function isEcsRamRole();
+    abstract public function getSecurityToken();
 }
